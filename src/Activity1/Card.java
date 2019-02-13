@@ -34,7 +34,9 @@ public class Card {
      *                  containing the point value of the card
      */
     public Card(String cardRank, String cardSuit, int cardPointValue) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		this.pointValue = cardPointValue;
+		this.rank = cardRank;
+		this.suit = cardSuit;
     }
 
 
@@ -44,7 +46,7 @@ public class Card {
      */
     public String suit() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-
+        return this.suit;
     }
 
     /**
@@ -53,7 +55,7 @@ public class Card {
      */
     public String rank() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-
+        return this.rank;
     }
 
     /**
@@ -62,7 +64,7 @@ public class Card {
      */
     public int pointValue() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-
+       return this.pointValue;
     }
 
     /** Compare this card with the argument.
