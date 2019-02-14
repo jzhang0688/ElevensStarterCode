@@ -46,7 +46,7 @@ public class Card {
      */
     public String suit() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-        return this.suit;
+        return suit;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Card {
      */
     public String rank() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-        return this.rank;
+        return rank;
     }
 
     /**
@@ -64,7 +64,7 @@ public class Card {
      */
     public int pointValue() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-       return this.pointValue;
+       return pointValue;
     }
 
     /** Compare this card with the argument.
@@ -75,23 +75,34 @@ public class Card {
      */
     public boolean matches(Card otherCard) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+        if((suit == otherCard.suit())&&(rank == otherCard.rank())&& (pointValue == otherCard.pointValue()))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
     }
 
     /**
      * Converts the rank, suit, and point value into a string in the format
-     *     "[Rank] of [Suit] (point value = [PointValue])".
+     * "[Rank] of [Suit] (point value = [PointValue])".
      * This provides a useful way of printing the contents
      * of a <code>Deck</code> in an easily readable format or performing
      * other similar functions.
      *
      * @return a <code>String</code> containing the rank, suit,
-     *         and point value of the card.
+     * and point value of the card.
      */
     @Override
     public String toString() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-
+        return "Card{" +
+                "suit='" + suit + '\'' +
+                ", rank='" + rank + '\'' +
+                ", pointValue=" + pointValue +
+                '}';
     }
 }
 
