@@ -1,8 +1,3 @@
-package Activity2;
-
-/**
- * Created by Teacher on 1/7/2019.
- */
 import java.util.List;
 import java.util.ArrayList;
 
@@ -17,6 +12,8 @@ public class Deck {
      * cards contains all the cards in the deck.
      */
     private List<Card> cards;
+    private List<Card> dealtcards;
+    private List<Card> shuffled;
 
     /**
      * size is the number of not-yet-dealt cards.
@@ -24,6 +21,7 @@ public class Deck {
      * The next card to be dealt is at size - 1.
      */
     private int size;
+
 
 
     /**
@@ -35,7 +33,17 @@ public class Deck {
      * @param values is an array containing all of the card point values.
      */
     public Deck(String[] ranks, String[] suits, int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+        cards = new ArrayList<Card>();
+        dealtcards = new ArrayList<Card>();
+        shuffled = new ArrayList<Card>();
+
+        for(int i = 0; i < ranks.length; i++)
+        {
+            for(int o; o < suits.length; o++) {
+                cards.add(new Card(ranks[i], suits[o], values[i]));
+            }
+        }
+        size = cards.size();
     }
 
 
@@ -44,7 +52,14 @@ public class Deck {
      * @return true if this deck is empty, false otherwise.
      */
     public boolean isEmpty() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		if (size() == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -52,7 +67,7 @@ public class Deck {
      * @return the number of undealt cards in this deck.
      */
     public int size() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		return size();
     }
 
     /**
@@ -69,7 +84,17 @@ public class Deck {
      *         previously dealt.
      */
     public Card deal() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+        if (size == 0)
+        {
+            return null;
+        }
+        else
+        {
+            dealtcards.add(cards.get(cards.size()));
+            cards.remove(cards.size());
+            return dealtcards.get(dealtcards.size());
+        }
+
     }
 
     /**
@@ -107,4 +132,3 @@ public class Deck {
         return rtn;
     }
 }
-
