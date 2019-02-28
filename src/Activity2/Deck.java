@@ -1,3 +1,6 @@
+package Activity2;
+import Activity2.Card;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -74,22 +77,7 @@ public class Deck {
      * Randomly permute the given collection of cards
      * and reset the size to represent the entire deck.
      */
-public void shuffle() {
-        /* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-        int k = 0;
-        for (int j =0; j<=25; j++)
-        {
-            shuffled.set(k,cards.get(j));
-            k = k+2;
-        }
-        k = 1;
-        for (int j = 26; j <= 51; j++)
-        {
-            shuffled.set(k,cards.get(j));
-            k = k+2;
-        }
 
-    }
 
 
     /**
@@ -97,6 +85,23 @@ public void shuffle() {
      * @return the card just dealt, or null if all the cards have been
      *         previously dealt.
      */
+
+    public void shuffle()
+    {
+        int k = 0;
+        for(int j = 0; j<=25; j++)
+        {
+            shuffled.set(k, cards.get(j));
+            k = k+2;
+        }
+        k = 1;
+        for (int j = 26; j <= 51; j++)
+        {
+            shuffled.set(k, cards.get(j));
+            k = k+2;
+        }
+    }
+
     public Card deal() {
         if (size == 0)
         {
