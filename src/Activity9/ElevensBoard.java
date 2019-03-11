@@ -55,7 +55,12 @@ public class ElevensBoard extends Board {
      */
     @Override
     public boolean isLegal(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        if (selectedCards.size() == 2) {
+            return containsPairSum11(selectedCards);
+        } else if (selectedCards.size() == 3) {
+            return containsJQK(selectedCards);
+        }
+        return false;
     }
 
     /**
@@ -68,8 +73,17 @@ public class ElevensBoard extends Board {
      */
     @Override
     public boolean anotherPlayIsPossible() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        List<Integer> cIndexes = cardIndexes();
+        if(containsPairSum11(cIndexes) || containsJQK(cIndexes))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
+
 
     /**
      * Check for an 11-pair in the selected cards.
@@ -80,7 +94,17 @@ public class ElevensBoard extends Board {
      *              contain an 11-pair; false otherwise.
      */
     private boolean containsPairSum11(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        if (selectedCards.size() < 2) {
+            return false;
+        }
+        for (int i = 0; i < selectedCards.size() - 1; i++) {
+            for (int j = i + 1; j < selectedCards.size(); j++) {
+                if (cardAt(selectedCards.get(i)).pointValue() + cardAt(selectedCards.get(j)).pointValue() == 11) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -92,6 +116,25 @@ public class ElevensBoard extends Board {
      *              include a jack, a queen, and a king; false otherwise.
      */
     private boolean containsJQK(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        boolean isthereJack = false;
+        boolean isthereQueen = false;
+        boolean isthereKing = false;
+        if (selectedCards.size() < 3) {
+            return false;
+        }
+        for (int i = 0; i < selectedCards.size(); i++) {
+            if (cardAt(selectedCards.get(i)).rank() == "jack") {
+                isthereJack = true;
+            }
+            else if (cardAt(selectedCards.get(i)).rank() == "queen") {
+                isthereQueen = true;
+            }
+            else if (cardAt(selectedCards.get(i)).rank() == "king") {
+                isthereKing = true;
+            }
+        }
+        return (isthereJack && isthereQueen && isthereKing);
     }
+
+
 }
